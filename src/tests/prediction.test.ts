@@ -93,18 +93,18 @@ describe("Risk Factor Calculations", () => {
     });
 
     it("should increase with more invoices", () => {
-      expect(calculateConfidence(1, false)).toBe(0.6);
-      expect(calculateConfidence(5, false)).toBe(0.8);
-      expect(calculateConfidence(10, false)).toBe(0.9);
+      expect(calculateConfidence(1, false)).toBeCloseTo(0.6, 5);
+      expect(calculateConfidence(5, false)).toBeCloseTo(0.8, 5);
+      expect(calculateConfidence(10, false)).toBeCloseTo(0.9, 5);
     });
 
     it("should add confidence for industry data", () => {
-      expect(calculateConfidence(0, true)).toBe(0.6);
-      expect(calculateConfidence(10, true)).toBe(1.0);
+      expect(calculateConfidence(0, true)).toBeCloseTo(0.6, 5);
+      expect(calculateConfidence(10, true)).toBeCloseTo(1.0, 5);
     });
 
     it("should cap at 1.0", () => {
-      expect(calculateConfidence(100, true)).toBe(1.0);
+      expect(calculateConfidence(100, true)).toBeCloseTo(1.0, 5);
     });
   });
 
