@@ -226,3 +226,27 @@ Contributions are welcome! Please read our contributing guidelines before submit
 ---
 
 Made with ❤️ for freelancers everywhere
+
+## Usage
+
+### Adding a Client
+1. Navigate to **Clients** in the sidebar
+2. Click **Add Client**
+3. Fill in client details and contact info
+4. The system will calculate an initial risk score
+
+### Tracking Invoices
+1. Go to **Invoices** 
+2. Click **Create Invoice**
+3. Select client and enter amount/due date
+4. Track payment status as it updates
+
+### Viewing Risk Scores
+- Dashboard shows overall portfolio risk
+- Client cards display individual risk scores
+- Color coding: Green (low) → Yellow (medium) → Red (high)
+
+### Running Reports
+1. Navigate to **Reports**
+2. Select date range
+3. View payment trends and risk analytics
