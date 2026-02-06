@@ -825,3 +825,522 @@ FREELANCER FOCUS ←--------+--------→ BUSINESS FOCUS
 3. Brand recognition as "the payment tool"
 4. Platform integrations making switching costly
 
+---
+
+## MVP Scope
+
+### MVP Philosophy
+
+The MVP (Minimum Viable Product) must:
+
+1. **Solve the core problem** — Help freelancers get paid on time
+2. **Validate the prediction hypothesis** — Can we predict late payments?
+3. **Prove willingness to pay** — Will users convert to paid plans?
+4. **Be buildable in 12 weeks** — Ship fast, iterate faster
+
+### MVP Feature Set
+
+#### 🟢 Must-Have (MVP Core)
+
+**1. Client Management**
+- Add/edit/delete clients
+- Store client details (company name, contact info, industry)
+- Client notes and tags
+- Client payment history summary
+
+**2. Invoice Tracking**
+- Manual invoice entry
+- Invoice details (amount, due date, description)
+- Invoice status tracking (draft, sent, overdue, paid)
+- Basic invoice import (CSV)
+
+**3. Payment Prediction (Core Differentiator)**
+- Risk score for each client (1-10 scale)
+- Risk factors explanation
+- Industry-based risk defaults
+- Historical payment pattern analysis
+- Visual risk indicator
+
+**4. Automated Follow-up Sequences**
+- Pre-configured email templates (friendly, firm, final)
+- Automatic scheduling based on due date
+- Escalation logic (friendly → firm → final)
+- Email sending via integrated provider
+- Manual override/pause capability
+
+**5. Dashboard**
+- Overview of outstanding invoices
+- Upcoming due dates
+- At-risk invoices highlighted
+- Total outstanding amount
+- Recent payment activity
+
+**6. Basic Reporting**
+- Payment received this month
+- Average days to payment per client
+- Late payment rate
+- Outstanding balance report
+
+**7. Authentication & Settings**
+- Email/password authentication
+- OAuth (Google)
+- User profile settings
+- Email template customization
+- Notification preferences
+
+#### 🟡 Should-Have (Post-MVP Sprint 1)
+
+**1. Integrations (Phase 1)**
+- Stripe integration (import invoices/payments)
+- QuickBooks integration
+- FreshBooks integration
+
+**2. Cash Flow Forecasting**
+- Predicted income calendar
+- Based on historical payment patterns
+- Visual cash flow chart
+
+**3. Advanced Risk Factors**
+- Client company size analysis
+- Industry risk database
+- Payment terms impact
+
+**4. Mobile App (Responsive)**
+- Mobile-optimized web app
+- Quick invoice status check
+- Payment received notifications
+
+#### 🟠 Could-Have (Future Roadmap)
+
+**1. Community Risk Data**
+- Anonymous aggregate client data
+- Industry benchmarks
+- "Similar companies" comparisons
+
+**2. Contract Analysis**
+- Payment terms extraction
+- Red flag detection
+- Contract scoring
+
+**3. Late Fee Calculator**
+- Automatic late fee calculation
+- Late fee notice generation
+- Interest accrual tracking
+
+**4. Team Features**
+- Multiple users per account
+- Role-based permissions
+- Shared client database
+
+**5. API Access**
+- Webhook notifications
+- RESTful API
+- Zapier integration
+
+#### ⚪ Won't-Have (Out of Scope)
+
+- Full invoicing capability (use integrations)
+- Accounting features
+- Tax calculation/reporting
+- Time tracking
+- Project management
+- Payment processing (use Stripe, PayPal, etc.)
+
+### MVP Timeline
+
+| Week | Milestone |
+|------|-----------|
+| 1-2 | Project setup, database schema, authentication |
+| 3-4 | Client management, invoice tracking |
+| 5-6 | Prediction algorithm v1, risk scoring |
+| 7-8 | Follow-up sequence system, email sending |
+| 9-10 | Dashboard, basic reporting |
+| 11-12 | Polish, testing, soft launch |
+
+### MVP Success Criteria
+
+| Metric | Target | Measurement |
+|--------|--------|-------------|
+| Beta users signed up | 100+ | Registration count |
+| Beta users active (weekly) | 50+ | Login activity |
+| Invoices tracked | 500+ | Database count |
+| Predictions generated | 200+ | Algorithm runs |
+| Follow-up emails sent | 100+ | Email logs |
+| User feedback collected | 30+ | Survey responses |
+| Conversion to paid | 10%+ | Upgrade rate |
+
+### Technical Scope Summary
+
+**Frontend:**
+- Next.js 16 with App Router
+- TypeScript (strict mode)
+- Tailwind CSS v4
+- shadcn/ui components
+- React Hook Form
+- Recharts for visualization
+
+**Backend:**
+- Next.js API routes
+- Neon Postgres database
+- Drizzle ORM
+- NextAuth.js authentication
+- Resend for email
+- Server Actions for mutations
+
+**Infrastructure:**
+- Vercel deployment
+- Neon Postgres (serverless)
+- Resend email service
+- Sentry error tracking
+- Vercel Analytics
+
+**Prediction Algorithm (MVP):**
+- Rule-based scoring system
+- Industry risk defaults
+- Historical pattern analysis
+- Weighted factor model
+
+### Budget Estimation (MVP)
+
+| Item | Monthly Cost |
+|------|--------------|
+| Vercel Pro | $20 |
+| Neon Postgres | $19 |
+| Resend (email) | $20 |
+| Domain | $1.50 |
+| Sentry | $0 (free tier) |
+| **Total** | **~$60/month** |
+
+Break-even: 4 paying customers at $19/month.
+
+---
+
+## Success Metrics
+
+### North Star Metric
+
+**Invoices Collected On Time Rate (ICOTR)**
+
+The percentage of tracked invoices that are paid by their due date (or within 3-day grace period).
+
+**Target Improvement:** Users should see 30%+ improvement in on-time payments after using PaymentPredictor for 3 months.
+
+### Key Performance Indicators (KPIs)
+
+#### Acquisition Metrics
+
+| Metric | Definition | Target (Y1) |
+|--------|------------|-------------|
+| Website Visitors | Unique monthly visitors | 10,000 |
+| Sign-up Rate | % visitors who register | 5% |
+| Activation Rate | % signups who add first invoice | 60% |
+| Free Users | Total registered free users | 5,000 |
+
+#### Engagement Metrics
+
+| Metric | Definition | Target |
+|--------|------------|--------|
+| Weekly Active Users (WAU) | Users logging in weekly | 40% of total |
+| Invoices Tracked per User | Average invoices per user | 10+ |
+| Clients Tracked per User | Average clients per user | 5+ |
+| Follow-up Emails Sent | Automated emails per month | 1,000+ |
+
+#### Revenue Metrics
+
+| Metric | Definition | Target (Y1) |
+|--------|------------|-------------|
+| Paying Customers | Users on paid plans | 500 |
+| Monthly Recurring Revenue (MRR) | Monthly subscription revenue | $9,500 |
+| Annual Recurring Revenue (ARR) | MRR × 12 | $114,000 |
+| Average Revenue Per User (ARPU) | MRR / paying users | $19 |
+| Customer Acquisition Cost (CAC) | Marketing spend / customers | <$50 |
+| Customer Lifetime Value (LTV) | ARPU × lifetime months | >$300 |
+| LTV:CAC Ratio | LTV / CAC | >6:1 |
+
+#### Retention Metrics
+
+| Metric | Definition | Target |
+|--------|------------|--------|
+| Monthly Churn Rate | % customers lost per month | <5% |
+| Net Promoter Score (NPS) | Would recommend (0-100) | >50 |
+| Customer Lifetime | Average months subscribed | 18+ |
+
+#### Product Metrics
+
+| Metric | Definition | Target |
+|--------|------------|--------|
+| Prediction Accuracy | % correct late/on-time predictions | 75%+ |
+| Follow-up Effectiveness | % of sent follow-ups that precede payment | 30%+ |
+| Time Saved | User-reported hours saved per month | 10+ |
+| Payment Improvement | % reduction in late payments | 30%+ |
+
+### Tracking Implementation
+
+**Analytics Tools:**
+- Vercel Analytics (traffic, performance)
+- PostHog (product analytics, funnels)
+- Sentry (errors, performance)
+- Custom database metrics
+
+**Key Events to Track:**
+- User registration
+- First client added
+- First invoice added
+- First prediction viewed
+- First follow-up sent
+- Payment received recorded
+- Upgrade to paid
+- Downgrade/churn
+
+---
+
+## Go-to-Market Strategy
+
+### Launch Phases
+
+#### Phase 0: Pre-Launch (Weeks 1-4 before launch)
+
+**Activities:**
+- Landing page with waitlist
+- Content creation (blog posts, Twitter threads)
+- Community engagement (Reddit, forums)
+- Email list building
+- Beta tester recruitment
+
+**Targets:**
+- 500 waitlist signups
+- 50 beta testers confirmed
+- 10 blog posts drafted
+- 1,000 Twitter followers
+
+#### Phase 1: Soft Launch (Weeks 1-4)
+
+**Activities:**
+- Beta release to waitlist
+- Collect feedback aggressively
+- Iterate on core features
+- Case study development
+- Testimonial collection
+
+**Targets:**
+- 100 active beta users
+- 50+ feedback items addressed
+- 5 testimonials collected
+- 2 case studies developed
+- <3% critical bug rate
+
+#### Phase 2: Public Launch (Weeks 5-8)
+
+**Activities:**
+- Product Hunt launch
+- Press outreach
+- Paid advertising (small test)
+- Partnership outreach
+- Content marketing push
+
+**Targets:**
+- 1,000 total users
+- 50 paying customers
+- $950 MRR
+- 1 major publication mention
+- 3 partnership conversations
+
+#### Phase 3: Growth (Weeks 9-52)
+
+**Activities:**
+- Content marketing scale-up
+- SEO optimization
+- Paid advertising optimization
+- Integration partnerships
+- Referral program launch
+
+**Targets:**
+- 5,000 total users
+- 500 paying customers
+- $9,500 MRR
+- 3 active integrations
+- 20%+ from referrals
+
+### Marketing Channels
+
+#### 1. Content Marketing (Primary)
+
+**Blog Topics:**
+- "Why 85% of Freelancers Get Paid Late (And How to Fix It)"
+- "The Psychology of Payment Follow-ups"
+- "How to Vet Clients Before Accepting Work"
+- "Cash Flow Planning for Freelancers"
+- "Contract Terms That Get You Paid Faster"
+
+**Content Distribution:**
+- Own blog (SEO)
+- Medium publication
+- LinkedIn articles
+- Twitter threads
+- Guest posts
+
+#### 2. Community Marketing
+
+**Target Communities:**
+- r/freelance (300k+ members)
+- r/consulting (40k+ members)
+- r/webdev (1M+ members)
+- r/graphic_design (3M+ members)
+- Indie Hackers
+- Facebook freelance groups
+- Slack/Discord communities
+
+**Approach:**
+- Genuine participation (not spammy)
+- Helpful advice on payment topics
+- Share learnings and data
+- Occasional product mentions (when relevant)
+
+#### 3. SEO (Long-term)
+
+**Target Keywords:**
+- "freelance late payment" (1,900 searches/mo)
+- "invoice payment reminder" (2,400 searches/mo)
+- "how to collect payment freelance" (500 searches/mo)
+- "client not paying invoice" (1,300 searches/mo)
+- "freelance cash flow" (400 searches/mo)
+
+#### 4. Partnerships
+
+**Integration Partners:**
+- Stripe (invoice import)
+- QuickBooks (sync)
+- FreshBooks (sync)
+- Invoice Ninja (sync)
+
+**Distribution Partners:**
+- Freelance marketplaces
+- Coworking spaces
+- Freelance associations
+- Accounting firms serving freelancers
+
+### Pricing Strategy
+
+**Tier Structure:**
+
+| Tier | Price | Target User |
+|------|-------|-------------|
+| Free | $0 | New freelancers, casual users |
+| Pro | $19/month | Active freelancers |
+| Business | $39/month | Agencies, power users |
+
+**Free Tier Limits:**
+- 3 clients maximum
+- 10 invoices/month
+- Basic reminders only
+- No prediction features
+- PaymentPredictor branding
+
+**Pro Tier Features:**
+- Unlimited clients
+- Unlimited invoices
+- Full prediction features
+- Custom follow-up sequences
+- Cash flow forecasting
+- Integrations
+- No branding
+
+**Business Tier Features:**
+- Everything in Pro
+- Team access (3 users)
+- API access
+- Priority support
+- Advanced analytics
+- White-label option
+
+---
+
+## Risk Analysis
+
+### Risk Matrix
+
+| Risk | Probability | Impact | Mitigation |
+|------|-------------|--------|------------|
+| Low user adoption | Medium | High | Strong content marketing, community engagement |
+| Prediction accuracy poor | Medium | High | Start rule-based, iterate with data |
+| Competitors copy features | Medium | Medium | Move fast, build data moat |
+| Integration API changes | Low | Medium | Abstract integration layer, monitor changes |
+| Email deliverability issues | Low | High | Use reputable provider, monitor rates |
+| Technical scaling issues | Low | Medium | Serverless architecture, monitoring |
+| Churn higher than expected | Medium | High | Focus on activation, regular user research |
+
+### Risk Deep Dives
+
+#### Risk 1: Prediction Accuracy
+
+**Concern:** What if our predictions are wrong? Users will lose trust.
+
+**Mitigation Strategy:**
+- Start with industry-based defaults (lower accuracy, but reasonable)
+- Clearly communicate confidence levels
+- Learn from every prediction (feedback loop)
+- Allow user override of predictions
+- Be transparent about algorithm limitations
+
+**Minimum Viable Accuracy:** 70%+ correct prediction for "high risk" clients.
+
+#### Risk 2: Competition
+
+**Concern:** Large players (Intuit, FreshBooks) could add similar features.
+
+**Mitigation Strategy:**
+- Move fast, establish market position
+- Build brand around payment focus
+- Create switching costs through integrations
+- Accumulate proprietary data
+- Serve freelancers better than generalists can
+
+#### Risk 3: Email Deliverability
+
+**Concern:** Follow-up emails going to spam defeats the purpose.
+
+**Mitigation Strategy:**
+- Use reputable email provider (Resend)
+- Implement proper SPF, DKIM, DMARC
+- Monitor deliverability rates
+- Offer user's own email integration option
+- Template review for spam triggers
+
+---
+
+## Appendix
+
+### A. Research Sources
+
+1. Remote.com Freelance Payment Research (2025)
+2. Jobbers Global Freelance Payment Delay Report (2025)
+3. Freelancers Union Annual Survey
+4. PayPal Small Business Insights
+5. Reddit r/freelance analysis (100+ posts)
+6. G2 and Capterra competitor reviews
+7. Industry blogs and publications
+
+### B. Acronyms
+
+| Acronym | Definition |
+|---------|------------|
+| MVP | Minimum Viable Product |
+| MRR | Monthly Recurring Revenue |
+| ARR | Annual Recurring Revenue |
+| CAC | Customer Acquisition Cost |
+| LTV | Customer Lifetime Value |
+| ARPU | Average Revenue Per User |
+| NPS | Net Promoter Score |
+| WAU | Weekly Active Users |
+| ICOTR | Invoices Collected On Time Rate |
+
+### C. Document Changelog
+
+| Version | Date | Changes |
+|---------|------|---------|
+| 1.0 | 2026-02-06 | Initial draft |
+
+---
+
+*End of Product Brief*
+
