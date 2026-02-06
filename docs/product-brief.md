@@ -206,3 +206,220 @@ Several trends make this the right time for PaymentPredictor:
 - Increased focus on gig worker protections
 - Tax reporting requirements drive better record-keeping
 
+---
+
+## Target Audience
+
+### Primary Audience: Independent Freelancers
+
+Our core market consists of independent freelancers who:
+- Work directly with clients (not through platforms like Upwork)
+- Invoice clients manually or through basic invoicing tools
+- Have experienced late payments and want to prevent them
+- Earn $30,000+ annually from freelance work
+- Are tech-comfortable and use SaaS tools
+
+#### Demographic Profile
+
+| Attribute | Primary Audience |
+|-----------|------------------|
+| Age Range | 25-45 years old |
+| Location | US, UK, Canada, Australia, EU |
+| Income | $30,000 - $200,000/year freelance |
+| Experience | 2+ years freelancing |
+| Tech Comfort | High (uses 5+ SaaS tools) |
+| Invoice Volume | 5-50 invoices/month |
+| Client Count | 5-30 active clients |
+
+### Audience Segments
+
+#### Segment 1: Freelance Writers & Editors
+
+**Size:** 500,000+ in US alone  
+**Pain Level:** Very High  
+**Willingness to Pay:** Medium  
+
+**Characteristics:**
+- High invoice volume (many small projects)
+- Work with publishers, content agencies, businesses
+- Often paid 30-60 days after submission
+- Net-30 terms common but frequently violated
+
+**Specific Challenges:**
+- Low per-invoice amounts make chasing feel not worth it
+- Work with many clients simultaneously
+- Publication industry notorious for slow payment
+- Often lack leverage (easily replaceable)
+
+**Quote:**
+> "I invoice 20+ clients a month. Keeping track of who owes what and when is a nightmare."
+
+#### Segment 2: Graphic Designers & Creatives
+
+**Size:** 300,000+ in US alone  
+**Pain Level:** High  
+**Willingness to Pay:** Medium-High  
+
+**Characteristics:**
+- Project-based work with larger invoices
+- Milestone payments common
+- Visual deliverables require approval cycles
+- Often work with marketing teams/agencies
+
+**Specific Challenges:**
+- Revision cycles delay final payment
+- "Final" files held hostage for payment
+- Scope creep affects payment timing
+- Larger invoices mean bigger cash flow impact
+
+**Quote:**
+> "I finished the branding project three weeks ago. They're 'reviewing' the final invoice while already using my designs everywhere."
+
+#### Segment 3: Web Developers & Programmers
+
+**Size:** 400,000+ in US alone  
+**Pain Level:** High  
+**Willingness to Pay:** High  
+
+**Characteristics:**
+- Technical deliverables with clear completion criteria
+- Often work with non-technical clients
+- Project values typically $2,000-$50,000+
+- Mix of fixed-price and hourly billing
+
+**Specific Challenges:**
+- Scope creep / feature creep delays payment
+- Technical clients understand; non-technical don't
+- Maintenance work vs project work payment differences
+- International clients complicate payment
+
+**Quote:**
+> "The site has been live for a month. They're using it daily. But the 'final payment' is still 'in processing.'"
+
+#### Segment 4: Consultants & Coaches
+
+**Size:** 200,000+ in US alone  
+**Pain Level:** Medium-High  
+**Willingness to Pay:** Very High  
+
+**Characteristics:**
+- High-value engagements ($5,000-$100,000+)
+- Fewer clients but larger invoices
+- Often work with corporate clients
+- Retainer models common
+
+**Specific Challenges:**
+- Corporate payment processes are slow (Net-60, Net-90)
+- Multiple approval layers
+- Budget cycles affect payment timing
+- Relationship preservation is critical
+
+**Quote:**
+> "My corporate client has to get three signatures for any payment over $5,000. My invoice has been 'in approval' for six weeks."
+
+#### Segment 5: Creative Agencies (2-10 people)
+
+**Size:** 100,000+ in US alone  
+**Pain Level:** Very High  
+**Willingness to Pay:** Very High  
+
+**Characteristics:**
+- Multiple team members to pay
+- Larger client invoices ($10,000-$500,000+)
+- Complex projects with multiple phases
+- Often have dedicated account managers
+
+**Specific Challenges:**
+- Must pay team even when clients don't pay
+- Cash flow critical for operations
+- More sophisticated invoicing needs
+- Need team-wide visibility
+
+**Quote:**
+> "When a client is 30 days late on a $50,000 invoice, I still have to make payroll. I've had to take out a business line of credit twice this year."
+
+### Secondary Audiences
+
+#### Freelance Platforms Power Users
+
+Freelancers who work primarily through platforms like Upwork, Fiverr, or Toptal but also have direct clients.
+
+**Why They're Secondary:**
+- Platform clients have built-in payment protection
+- Smaller percentage of their income is at risk
+- May not need full feature set
+
+**Opportunity:**
+- Convert them as they graduate to more direct work
+- Offer lighter-touch product tier
+
+#### Part-Time Freelancers
+
+People with full-time jobs who freelance on the side.
+
+**Why They're Secondary:**
+- Lower invoice volume
+- Less dependent on freelance income
+- May not justify paid subscription
+
+**Opportunity:**
+- Free tier adoption → conversion as they go full-time
+- Word-of-mouth to serious freelancers
+
+### Audience Exclusions
+
+We are explicitly NOT targeting:
+
+**1. Enterprise Accounts Receivable Teams**
+- Different needs (B2B collections)
+- Much larger invoices
+- Existing enterprise solutions
+- Long sales cycles
+
+**2. Traditional Small Businesses**
+- Different payment dynamics
+- Already served by QuickBooks, Xero
+- Retail/inventory complications
+
+**3. Gig Economy Workers (Uber, DoorDash, etc.)**
+- Paid by platforms, not clients
+- No invoice-based work
+- Different payment model entirely
+
+### Geographic Focus
+
+**Phase 1 (Year 1):**
+- United States (primary)
+- Canada
+- United Kingdom
+
+**Phase 2 (Year 2):**
+- Australia
+- European Union
+- New Zealand
+
+**Rationale:**
+- English-language markets first
+- Similar legal/payment structures
+- Strong freelance cultures
+- High willingness to pay for SaaS
+
+### Audience Size Estimation
+
+| Segment | US Population | Global Estimate |
+|---------|---------------|-----------------|
+| Freelance Writers | 500,000 | 2,000,000 |
+| Graphic Designers | 300,000 | 1,200,000 |
+| Web Developers | 400,000 | 1,600,000 |
+| Consultants/Coaches | 200,000 | 800,000 |
+| Small Agencies | 100,000 | 400,000 |
+| **Total Addressable Market** | **1,500,000** | **6,000,000** |
+
+**Conservative Penetration Targets:**
+
+| Year | Market Penetration | Users |
+|------|-------------------|-------|
+| Year 1 | 0.03% | 5,000 |
+| Year 2 | 0.1% | 15,000 |
+| Year 3 | 0.3% | 45,000 |
+
