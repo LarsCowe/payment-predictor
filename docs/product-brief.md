@@ -533,3 +533,295 @@ Every payment (or late payment) makes the system smarter:
 | Improved cash flow predictability | 80%+ accuracy |
 | Reduction in payment anxiety | Measurable (NPS) |
 
+---
+
+## Competitive Analysis
+
+### Competitive Landscape Overview
+
+The market for freelancer financial tools is fragmented, with no clear leader in payment prediction. Existing players fall into three categories:
+
+1. **Invoicing Tools** — Focus on sending invoices, basic reminders
+2. **Accounting Suites** — Full financial management, not freelancer-focused
+3. **Freelance Management Platforms** — All-in-one but expensive, complex
+
+None currently offer **predictive payment intelligence** or **smart follow-up sequences**.
+
+### Direct Competitors
+
+#### Competitor 1: Invoice Ninja
+
+**Website:** invoiceninja.com  
+**Founded:** 2014  
+**Pricing:** Free / $14 per month (Pro)  
+**Target Audience:** Small businesses and freelancers
+
+**Overview:**
+Invoice Ninja is an open-source invoicing platform that allows users to create, send, and track invoices. It offers a self-hosted option and a cloud version.
+
+**Features:**
+- Invoice creation and sending
+- Basic payment reminders (fixed schedule)
+- Multiple payment gateway integrations
+- Time tracking
+- Proposal creation
+- Client portal
+- Expense tracking
+
+**Strengths:**
+- Open source / self-hosted option
+- Generous free tier
+- Clean interface
+- Strong developer community
+- Multiple payment integrations
+
+**Weaknesses:**
+- Generic reminder system (one-size-fits-all)
+- No payment prediction
+- No client risk scoring
+- Limited follow-up customization
+- No escalation logic
+- Basic analytics
+
+**User Reviews (G2/Capterra Summary):**
+> "Good for basic invoicing but reminder features are limited." — G2 Review  
+> "Wish the reminders were smarter." — Capterra Review
+
+**Our Advantage:**
+Invoice Ninja focuses on invoice *creation*. PaymentPredictor focuses on invoice *collection*. We can integrate with Invoice Ninja (and similar tools) to add the prediction and automation layer they lack.
+
+---
+
+#### Competitor 2: Wave
+
+**Website:** waveapps.com  
+**Founded:** 2010 (acquired by H&R Block 2019)  
+**Pricing:** Free (payment processing fees)  
+**Target Audience:** Small businesses and freelancers
+
+**Overview:**
+Wave offers free accounting and invoicing software monetized through payment processing and payroll services.
+
+**Features:**
+- Invoicing
+- Accounting/bookkeeping
+- Receipt scanning
+- Payment processing (fee-based)
+- Payroll (paid add-on)
+- Financial reporting
+
+**Strengths:**
+- Completely free core features
+- Full accounting suite
+- Clean, approachable interface
+- Good for beginners
+- Backed by H&R Block
+
+**Weaknesses:**
+- **No late payment features at all**
+- No reminders beyond basic
+- No client payment tracking
+- No prediction or intelligence
+- Monetization through payment fees (conflict of interest?)
+
+**User Reviews:**
+> "Great for free accounting but doesn't help with collecting payments." — G2 Review
+
+**Our Advantage:**
+Wave has zero features for payment prediction or collection. Users could use Wave for accounting and PaymentPredictor for payment management.
+
+---
+
+#### Competitor 3: FreshBooks
+
+**Website:** freshbooks.com  
+**Founded:** 2003  
+**Pricing:** $17 / $30 / $55 per month  
+**Target Audience:** Self-employed professionals and small businesses
+
+**Overview:**
+FreshBooks is a well-established invoicing and accounting platform with a strong brand in the freelance market.
+
+**Features:**
+- Invoicing
+- Time tracking
+- Expense tracking
+- Project management
+- Client portal
+- Payment reminders
+- Basic reporting
+- Integrations
+
+**Strengths:**
+- Strong brand recognition
+- Polished, user-friendly interface
+- Good mobile apps
+- Established integrations ecosystem
+- Strong customer support
+
+**Weaknesses:**
+- Expensive for freelancers ($17-55/month)
+- Reminder system is generic
+- No payment prediction
+- No client risk assessment
+- No smart escalation
+- Overkill for payment-focused needs
+
+**User Reviews:**
+> "Love FreshBooks but the payment reminders are pretty basic. Wish they were smarter." — Capterra Review  
+> "Great for invoicing, but I still manually track who's likely to pay late." — G2 Review
+
+**Our Advantage:**
+FreshBooks is trying to be everything. PaymentPredictor is focused on one thing: making sure you get paid. We can integrate with FreshBooks to add the features they lack.
+
+---
+
+#### Competitor 4: Bonsai
+
+**Website:** hellobonsai.com  
+**Founded:** 2015  
+**Pricing:** $25 / $39 / $79 per month  
+**Target Audience:** Freelancers and creative professionals
+
+**Overview:**
+Bonsai is an all-in-one freelance management platform covering contracts, proposals, invoicing, accounting, and taxes.
+
+**Features:**
+- Contract templates
+- Proposal creation
+- Invoicing
+- Time tracking
+- Expense management
+- Tax estimation
+- Basic payment reminders
+- Client CRM
+
+**Strengths:**
+- All-in-one for freelance business
+- Good contract templates
+- Tax features useful
+- Clean design
+- Strong in creative industry
+
+**Weaknesses:**
+- Expensive ($25-79/month)
+- Jack-of-all-trades, master of none
+- Basic reminder functionality
+- No payment prediction
+- No client risk scoring
+- Feature bloat for payment focus
+
+**User Reviews:**
+> "Good overall but I wish it helped me figure out which clients are likely to pay late." — Reddit r/freelance
+
+**Our Advantage:**
+Bonsai tries to do everything. We do one thing exceptionally well. Users can keep Bonsai and add PaymentPredictor for superior payment management.
+
+---
+
+#### Competitor 5: QuickBooks Self-Employed
+
+**Website:** quickbooks.intuit.com/self-employed  
+**Founded:** 1983 (Intuit)  
+**Pricing:** $15 / $30 per month  
+**Target Audience:** Self-employed individuals
+
+**Overview:**
+QuickBooks Self-Employed is Intuit's offering for freelancers and gig workers, providing tax tracking and basic invoicing.
+
+**Features:**
+- Income and expense tracking
+- Tax deduction categorization
+- Basic invoicing
+- Mileage tracking
+- Receipt capture
+- Quarterly tax estimates
+
+**Strengths:**
+- TurboTax integration
+- Strong for tax purposes
+- Well-known brand
+- Reliable platform
+- Good expense categorization
+
+**Weaknesses:**
+- Primarily tax-focused
+- Limited invoicing features
+- No payment prediction
+- No smart reminders
+- Not designed for payment collection
+
+**User Reviews:**
+> "Great for taxes, not great for getting paid." — User review
+
+**Our Advantage:**
+QBSE is focused on taxes and compliance. We're focused on cash flow and payment collection. Complementary products.
+
+---
+
+### Indirect Competitors
+
+#### Payment Reminder Apps
+
+Simple apps that send scheduled reminders (Plutio, HoneyBook, etc.). They lack prediction and intelligence.
+
+#### Accounts Receivable Software
+
+Enterprise solutions like Invoiced, Chaser, YayPay. Too expensive and complex for freelancers.
+
+#### Spreadsheets
+
+Many freelancers track payments in Excel/Google Sheets. Free but manual and no automation.
+
+### Competitive Positioning Map
+
+```
+                    HIGH INTELLIGENCE
+                          ↑
+                          |
+                          |  ★ PaymentPredictor
+                          |    (Our Position)
+                          |
+FREELANCER FOCUS ←--------+--------→ BUSINESS FOCUS
+                          |
+         Wave        ○    |    ○ FreshBooks
+                     ○    |         ○ QuickBooks
+         Invoice Ninja    |           ○ Bonsai
+                          |
+                          ↓
+                    LOW INTELLIGENCE
+```
+
+### Feature Comparison Matrix
+
+| Feature | PaymentPredictor | Invoice Ninja | Wave | FreshBooks | Bonsai | QBSE |
+|---------|------------------|---------------|------|------------|--------|------|
+| **Core Invoicing** | ○ Integration | ✅ | ✅ | ✅ | ✅ | ✅ |
+| **Payment Prediction** | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ |
+| **Client Risk Scoring** | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ |
+| **Smart Escalation** | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ |
+| **Cash Flow Forecast** | ✅ | ❌ | ❌ | ⚠️ | ❌ | ❌ |
+| **Basic Reminders** | ✅ | ✅ | ❌ | ✅ | ✅ | ❌ |
+| **Freelancer Pricing** | ✅ $19/mo | ✅ Free-$14 | ✅ Free | ⚠️ $17-55 | ❌ $25-79 | ✅ $15-30 |
+| **Focused Solution** | ✅ | ⚠️ | ⚠️ | ❌ | ❌ | ⚠️ |
+
+### Competitive Moats
+
+**Short-Term Moats (Year 1):**
+1. First-mover in prediction space for freelancers
+2. Laser focus on single problem
+3. Superior UX for payment management
+4. Freelancer-appropriate pricing
+
+**Medium-Term Moats (Year 2-3):**
+1. Data advantage (more predictions = better accuracy)
+2. Integration ecosystem
+3. Community and content moat
+4. Referral network effects
+
+**Long-Term Moats (Year 3+):**
+1. Proprietary prediction algorithm
+2. Industry benchmark data
+3. Brand recognition as "the payment tool"
+4. Platform integrations making switching costly
+
