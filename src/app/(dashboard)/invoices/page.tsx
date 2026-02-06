@@ -1,4 +1,5 @@
-import type { Metadata } from "next";
+"use client";
+
 import Link from "next/link";
 import { PageHeader } from "@/components/layout/header";
 import { StatusBadge } from "@/components/data-display/status-badge";
@@ -31,10 +32,6 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-export const metadata: Metadata = {
-  title: "Invoices",
-  description: "Track and manage your invoices",
-};
 
 // Mock data
 const invoices = [

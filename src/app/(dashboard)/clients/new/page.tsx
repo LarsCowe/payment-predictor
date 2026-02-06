@@ -1,4 +1,5 @@
-import type { Metadata } from "next";
+"use client";
+
 import Link from "next/link";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -6,18 +7,13 @@ import { ClientForm } from "@/components/forms/client-form";
 import { ArrowLeft } from "lucide-react";
 import type { CreateClientFormData } from "@/lib/validations/client";
 
-export const metadata: Metadata = {
-  title: "Add Client",
-  description: "Add a new client to track",
-};
-
 /**
  * New client page
  */
 export default function NewClientPage() {
   const handleSubmit = async (data: CreateClientFormData) => {
-    "use server";
-    // TODO: Implement client creation
+    // TODO: Implement API call
+    await new Promise((resolve) => setTimeout(resolve, 1000));
   };
 
   return (
@@ -41,23 +37,9 @@ export default function NewClientPage() {
           <CardTitle>Client Information</CardTitle>
         </CardHeader>
         <CardContent>
-          <ClientFormWrapper />
+          <ClientForm onSubmit={handleSubmit} />
         </CardContent>
       </Card>
     </div>
   );
-}
-
-/**
- * Client-side form wrapper
- */
-function ClientFormWrapper() {
-  "use client";
-
-  const handleSubmit = async (data: CreateClientFormData) => {
-    // TODO: Implement API call
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-  };
-
-  return <ClientForm onSubmit={handleSubmit} />;
 }

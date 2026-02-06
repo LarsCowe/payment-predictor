@@ -1,4 +1,5 @@
-import type { Metadata } from "next";
+"use client";
+
 import Link from "next/link";
 import { PageHeader } from "@/components/layout/header";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -14,10 +15,6 @@ import {
   ChevronRight,
 } from "lucide-react";
 
-export const metadata: Metadata = {
-  title: "Settings",
-  description: "Manage your account settings and preferences",
-};
 
 /**
  * Settings page

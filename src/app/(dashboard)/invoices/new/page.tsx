@@ -2,9 +2,11 @@
 
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
+import { Suspense } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { InvoiceForm } from "@/components/forms/invoice-form";
+import { Skeleton } from "@/components/ui/skeleton";
 import { ArrowLeft } from "lucide-react";
 import type { CreateInvoiceFormData } from "@/lib/validations/invoice";
 
@@ -18,10 +20,7 @@ const clients = [
   { id: "c6", companyName: "Healthcare Plus" },
 ];
 
-/**
- * New invoice page
- */
-export default function NewInvoicePage() {
+function InvoiceFormWrapper() {
   const searchParams = useSearchParams();
   const preselectedClientId = searchParams.get("clientId") || "";
 
@@ -30,6 +29,21 @@ export default function NewInvoicePage() {
     await new Promise((resolve) => setTimeout(resolve, 1000));
   };
 
+  return (
+    <InvoiceForm
+      clients={clients}
+      defaultValues={
+        preselectedClientId ? { clientId: preselectedClientId } : undefined
+      }
+      onSubmit={handleSubmit}
+    />
+  );
+}
+
+/**
+ * New invoice page
+ */
+export default function NewInvoicePage() {
   return (
     <div className="max-w-2xl mx-auto space-y-6">
       <div className="flex items-center gap-4">
@@ -51,13 +65,9 @@ export default function NewInvoicePage() {
           <CardTitle>Invoice Details</CardTitle>
         </CardHeader>
         <CardContent>
-          <InvoiceForm
-            clients={clients}
-            defaultValues={
-              preselectedClientId ? { clientId: preselectedClientId } : undefined
-            }
-            onSubmit={handleSubmit}
-          />
+          <Suspense fallback={<Skeleton className="h-96 w-full" />}>
+            <InvoiceFormWrapper />
+          </Suspense>
         </CardContent>
       </Card>
     </div>

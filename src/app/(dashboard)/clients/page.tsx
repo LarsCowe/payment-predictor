@@ -1,4 +1,5 @@
-import type { Metadata } from "next";
+"use client";
+
 import Link from "next/link";
 import { PageHeader } from "@/components/layout/header";
 import { ClientCard, ClientCardSkeleton } from "@/components/data-display/client-card";
@@ -14,10 +15,6 @@ import {
 import { Plus, Search, SlidersHorizontal } from "lucide-react";
 import { industries, industryLabels } from "@/lib/validations/client";
 
-export const metadata: Metadata = {
-  title: "Clients",
-  description: "Manage your clients and view risk assessments",
-};
 
 // Mock data
 const clients = [

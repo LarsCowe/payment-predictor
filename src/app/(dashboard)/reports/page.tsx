@@ -1,4 +1,5 @@
-import type { Metadata } from "next";
+"use client";
+
 import { PageHeader } from "@/components/layout/header";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { MetricCard } from "@/components/data-display/metric-card";
@@ -12,10 +13,6 @@ import {
   CheckCircle,
 } from "lucide-react";
 
-export const metadata: Metadata = {
-  title: "Reports",
-  description: "View payment analytics and insights",
-};
 
 // Mock data
 const reportData = {

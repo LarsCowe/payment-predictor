@@ -1,4 +1,5 @@
-import type { Metadata } from "next";
+"use client";
+
 import Link from "next/link";
 import { PageHeader } from "@/components/layout/header";
 import { MetricCard } from "@/components/data-display/metric-card";
@@ -17,10 +18,6 @@ import {
   Plus,
 } from "lucide-react";
 
-export const metadata: Metadata = {
-  title: "Dashboard",
-  description: "Overview of your payment status and client risk",
-};
 
 // Mock data - would come from database in production
 const dashboardStats = {
