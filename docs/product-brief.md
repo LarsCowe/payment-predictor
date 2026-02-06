@@ -423,3 +423,113 @@ We are explicitly NOT targeting:
 | Year 2 | 0.1% | 15,000 |
 | Year 3 | 0.3% | 45,000 |
 
+---
+
+## Value Proposition
+
+### Core Value Proposition
+
+> **PaymentPredictor helps freelancers get paid on time by predicting which clients are likely to pay late and automating the follow-up process, so you can focus on your work instead of chasing payments.**
+
+### Value Proposition Canvas
+
+#### Customer Jobs
+
+| Job Type | Description |
+|----------|-------------|
+| **Functional Jobs** | |
+| Get paid for work | Receive compensation for completed projects |
+| Track outstanding invoices | Know who owes what and when |
+| Follow up on late payments | Remind clients without damaging relationships |
+| Forecast cash flow | Plan for upcoming income and expenses |
+| **Emotional Jobs** | |
+| Feel financially secure | Reduce anxiety about income |
+| Maintain professional image | Handle payment issues gracefully |
+| Feel in control | Understand and manage financial situation |
+| **Social Jobs** | |
+| Maintain client relationships | Balance payment needs with relationship |
+| Appear professional | Handle finances like a "real" business |
+
+#### Pains
+
+| Pain | Intensity (1-10) |
+|------|------------------|
+| Not knowing if client will pay on time | 9 |
+| Awkwardness of payment follow-ups | 9 |
+| Cash flow unpredictability | 8 |
+| Time wasted on payment admin | 7 |
+| Stress and anxiety about money | 8 |
+| Damaged client relationships from chasing | 7 |
+| Lost income to non-payment | 8 |
+| Manual tracking across clients | 6 |
+
+#### Gains
+
+| Gain | Impact |
+|------|--------|
+| Know before accepting work if client is risky | High |
+| Automated, professional follow-ups | High |
+| Accurate cash flow predictions | Medium |
+| Less time on admin, more on billable work | Medium |
+| Peace of mind about finances | High |
+| Data to support late fee decisions | Medium |
+| Historical payment data for client decisions | High |
+
+### Unique Value Proposition Matrix
+
+| Feature | PaymentPredictor | Current Alternatives |
+|---------|------------------|----------------------|
+| Client Risk Scoring | ✅ Pre-project prediction | ❌ Not available |
+| Smart Follow-up Sequences | ✅ Escalating, personalized | ⚠️ Generic reminders |
+| Cash Flow Forecasting | ✅ Based on actual behavior | ⚠️ Based on due dates |
+| Payment Pattern Analytics | ✅ Per-client insights | ❌ Not available |
+| Historical Client Database | ✅ Builds over time | ❌ Not available |
+| Freelancer-Focused UX | ✅ Built for freelancers | ⚠️ Built for businesses |
+| Integration with Existing Tools | ✅ Works with your stack | ✅ Available |
+
+### Key Differentiators
+
+**1. Prediction, Not Just Tracking**
+
+Existing tools tell you that an invoice is overdue. PaymentPredictor tells you *before you send the invoice* how likely this client is to pay late, based on:
+- Industry averages
+- Company size and type
+- Historical behavior (if available)
+- Contract terms
+- Payment method
+
+**2. Intelligent Escalation**
+
+Generic reminders are easy to ignore. PaymentPredictor's follow-up sequences:
+- Start friendly, escalate appropriately
+- Adapt timing to client behavior patterns
+- Include professional language proven to work
+- Optionally mention late fees and consequences
+- Can be customized per client
+
+**3. Freelancer-First Design**
+
+Unlike tools built for businesses and adapted for freelancers:
+- Simple, focused interface
+- No unnecessary features
+- Pricing appropriate for individual freelancers
+- Understands freelancer-client dynamics
+- Community-informed feature development
+
+**4. Learning System**
+
+Every payment (or late payment) makes the system smarter:
+- Your personal client database improves
+- Anonymous aggregate data improves predictions
+- Industry benchmarks become more accurate
+- Your follow-up effectiveness improves
+
+### Value Metrics
+
+| Metric | Target |
+|--------|--------|
+| Reduction in late payments | 30%+ |
+| Time saved per month | 10+ hours |
+| Improved cash flow predictability | 80%+ accuracy |
+| Reduction in payment anxiety | Measurable (NPS) |
+
