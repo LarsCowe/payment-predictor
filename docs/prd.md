@@ -1027,3 +1027,1472 @@ Alex founded a boutique digital marketing agency 5 years ago. The agency has 4 f
 
 ---
 
+## Functional Requirements
+
+### FR-1: Authentication System
+
+#### FR-1.1: User Registration
+The system SHALL allow new users to register with email and password.
+
+**Requirements:**
+- FR-1.1.1: Email must be unique in the system
+- FR-1.1.2: Password must be minimum 8 characters
+- FR-1.1.3: Password must contain at least one number
+- FR-1.1.4: Confirmation email must be sent within 2 minutes
+- FR-1.1.5: Account is pending until email confirmed
+
+#### FR-1.2: OAuth Authentication
+The system SHALL support Google OAuth 2.0 for registration and login.
+
+**Requirements:**
+- FR-1.2.1: OAuth consent screen displays appropriate scopes
+- FR-1.2.2: Google account email becomes user email
+- FR-1.2.3: Profile picture imported from Google
+- FR-1.2.4: Existing email accounts are linked to OAuth
+
+#### FR-1.3: Session Management
+The system SHALL maintain user sessions securely.
+
+**Requirements:**
+- FR-1.3.1: Sessions expire after 30 days of inactivity
+- FR-1.3.2: Sessions use HTTP-only secure cookies
+- FR-1.3.3: Users can log out from all devices
+- FR-1.3.4: Session tokens are cryptographically random
+
+---
+
+### FR-2: Client Management
+
+#### FR-2.1: Client CRUD Operations
+The system SHALL support create, read, update, delete operations for clients.
+
+**Requirements:**
+- FR-2.1.1: Client company name is required (max 200 chars)
+- FR-2.1.2: Contact name is optional (max 100 chars)
+- FR-2.1.3: Contact email is optional but validated if provided
+- FR-2.1.4: Industry selection from predefined list
+- FR-2.1.5: Notes field supports up to 10,000 characters
+- FR-2.1.6: Soft delete preserves historical data
+
+#### FR-2.2: Client Risk Scoring
+The system SHALL calculate and display risk scores for each client.
+
+**Requirements:**
+- FR-2.2.1: Risk score is integer 1-10
+- FR-2.2.2: Score calculated from multiple factors
+- FR-2.2.3: Score updates on new payment data
+- FR-2.2.4: Factors and weights are configurable (admin)
+- FR-2.2.5: Score explanation available to users
+
+---
+
+### FR-3: Invoice Management
+
+#### FR-3.1: Invoice CRUD Operations
+The system SHALL support create, read, update, delete operations for invoices.
+
+**Requirements:**
+- FR-3.1.1: Invoice requires client, amount, due date
+- FR-3.1.2: Amount is positive decimal (max 2 decimal places)
+- FR-3.1.3: Amount supports currencies (MVP: USD only)
+- FR-3.1.4: Due date cannot be in the past for new invoices
+- FR-3.1.5: Invoice number is optional (auto-generated if blank)
+
+#### FR-3.2: Invoice Status Management
+The system SHALL track invoice status through lifecycle.
+
+**Requirements:**
+- FR-3.2.1: Status options: Draft, Sent, Overdue, Paid
+- FR-3.2.2: Status transitions: Draft → Sent → Overdue → Paid
+- FR-3.2.3: Status automatically changes to Overdue on due date
+- FR-3.2.4: Status changes to Paid when marked paid
+- FR-3.2.5: Status changes are logged
+
+#### FR-3.3: Payment Recording
+The system SHALL allow users to record payments received.
+
+**Requirements:**
+- FR-3.3.1: Payment date is required
+- FR-3.3.2: Payment date cannot be future
+- FR-3.3.3: Days late calculated automatically
+- FR-3.3.4: Client statistics update on payment
+- FR-3.3.5: Partial payments not supported (MVP)
+
+---
+
+### FR-4: Prediction System
+
+#### FR-4.1: Risk Score Calculation
+The system SHALL calculate client risk scores using defined algorithm.
+
+**Requirements:**
+- FR-4.1.1: Industry factor (default risk by industry)
+- FR-4.1.2: Historical factor (past payment behavior)
+- FR-4.1.3: Recency factor (recent behavior weighted higher)
+- FR-4.1.4: Volume factor (more data = higher confidence)
+- FR-4.1.5: Score normalized to 1-10 scale
+
+#### FR-4.2: Risk Factor Weights
+The system SHALL apply weights to risk factors.
+
+**Default Weights (MVP):**
+| Factor | Weight |
+|--------|--------|
+| Industry Average | 20% |
+| Payment History | 50% |
+| Recent Payments (90 days) | 20% |
+| Invoice Size | 10% |
+
+**Requirements:**
+- FR-4.2.1: Weights configurable by admin
+- FR-4.2.2: Weights sum to 100%
+- FR-4.2.3: Default weights apply to new installations
+
+#### FR-4.3: Industry Risk Database
+The system SHALL maintain industry risk benchmarks.
+
+**Requirements:**
+- FR-4.3.1: At least 20 industry categories
+- FR-4.3.2: Each industry has default risk score
+- FR-4.3.3: Industry data sourced from research
+- FR-4.3.4: Industry data updated periodically
+
+---
+
+### FR-5: Follow-up System
+
+#### FR-5.1: Automated Email Sequences
+The system SHALL send automated follow-up emails based on schedule.
+
+**Requirements:**
+- FR-5.1.1: Default sequence is 5 emails
+- FR-5.1.2: Timing relative to due date
+- FR-5.1.3: Sequence pauses when invoice paid
+- FR-5.1.4: User can disable per invoice
+- FR-5.1.5: User can customize timing
+
+#### FR-5.2: Email Template System
+The system SHALL support customizable email templates.
+
+**Requirements:**
+- FR-5.2.1: Templates support variables
+- FR-5.2.2: Variables include: client_name, amount, due_date, invoice_number, days_overdue
+- FR-5.2.3: Templates stored per user
+- FR-5.2.4: Default templates provided
+- FR-5.2.5: Preview functionality available
+
+#### FR-5.3: Email Sending
+The system SHALL send emails via integrated email provider.
+
+**Requirements:**
+- FR-5.3.1: Emails sent via Resend API
+- FR-5.3.2: From address is configurable
+- FR-5.3.3: Delivery status tracked
+- FR-5.3.4: Failed sends retried (3 attempts)
+- FR-5.3.5: Failures logged and user notified
+
+---
+
+### FR-6: Dashboard & Reporting
+
+#### FR-6.1: Dashboard Data
+The system SHALL display aggregated dashboard data.
+
+**Requirements:**
+- FR-6.1.1: Total outstanding amount calculated
+- FR-6.1.2: Invoice count by status
+- FR-6.1.3: Overdue invoices listed
+- FR-6.1.4: Upcoming due dates shown
+- FR-6.1.5: Recent activity displayed
+
+#### FR-6.2: Reporting
+The system SHALL generate standard reports.
+
+**Requirements:**
+- FR-6.2.1: Payments received report (by period)
+- FR-6.2.2: Client performance report
+- FR-6.2.3: Outstanding invoices report
+- FR-6.2.4: Reports exportable to CSV
+- FR-6.2.5: Date range filtering supported
+
+---
+
+## Non-Functional Requirements
+
+### NFR-1: Performance
+
+#### NFR-1.1: Page Load Time
+The system SHALL load pages within acceptable time limits.
+
+**Requirements:**
+- NFR-1.1.1: Dashboard loads in <2 seconds (P95)
+- NFR-1.1.2: Invoice list loads in <1.5 seconds (P95)
+- NFR-1.1.3: Client list loads in <1.5 seconds (P95)
+- NFR-1.1.4: API responses complete in <500ms (P95)
+- NFR-1.1.5: Time to Interactive <3 seconds
+
+#### NFR-1.2: Database Performance
+The system SHALL maintain efficient database operations.
+
+**Requirements:**
+- NFR-1.2.1: Queries complete in <100ms (P95)
+- NFR-1.2.2: Bulk operations paginated
+- NFR-1.2.3: Indexes on frequently queried columns
+- NFR-1.2.4: Connection pooling implemented
+- NFR-1.2.5: Query optimization reviewed quarterly
+
+#### NFR-1.3: Scalability
+The system SHALL scale to support growth.
+
+**Requirements:**
+- NFR-1.3.1: Support 10,000 concurrent users
+- NFR-1.3.2: Support 100,000 total users
+- NFR-1.3.3: Support 1,000,000 invoices
+- NFR-1.3.4: Horizontal scaling capability
+- NFR-1.3.5: No single points of failure
+
+---
+
+### NFR-2: Security
+
+#### NFR-2.1: Authentication Security
+The system SHALL implement secure authentication.
+
+**Requirements:**
+- NFR-2.1.1: Passwords hashed with bcrypt (cost 12)
+- NFR-2.1.2: Session tokens 256-bit random
+- NFR-2.1.3: HTTPS required for all traffic
+- NFR-2.1.4: Rate limiting on auth endpoints
+- NFR-2.1.5: Account lockout after 5 failed attempts
+
+#### NFR-2.2: Data Protection
+The system SHALL protect user data.
+
+**Requirements:**
+- NFR-2.2.1: Data encrypted at rest (AES-256)
+- NFR-2.2.2: Data encrypted in transit (TLS 1.3)
+- NFR-2.2.3: PII access logged
+- NFR-2.2.4: Database backups encrypted
+- NFR-2.2.5: API keys stored in environment variables
+
+#### NFR-2.3: Authorization
+The system SHALL enforce proper authorization.
+
+**Requirements:**
+- NFR-2.3.1: Users can only access own data
+- NFR-2.3.2: Team access requires explicit permission
+- NFR-2.3.3: API requires authentication token
+- NFR-2.3.4: Admin functions restricted
+- NFR-2.3.5: Authorization checked server-side
+
+---
+
+### NFR-3: Reliability
+
+#### NFR-3.1: Availability
+The system SHALL maintain high availability.
+
+**Requirements:**
+- NFR-3.1.1: 99.9% uptime SLA
+- NFR-3.1.2: Planned maintenance windows <4 hours/month
+- NFR-3.1.3: Status page for outage communication
+- NFR-3.1.4: Automatic failover for database
+- NFR-3.1.5: Multi-region deployment (post-MVP)
+
+#### NFR-3.2: Data Durability
+The system SHALL protect against data loss.
+
+**Requirements:**
+- NFR-3.2.1: Database backups every 6 hours
+- NFR-3.2.2: Point-in-time recovery for 7 days
+- NFR-3.2.3: Backups stored in separate region
+- NFR-3.2.4: Backup restoration tested monthly
+- NFR-3.2.5: Transaction logging enabled
+
+#### NFR-3.3: Error Handling
+The system SHALL handle errors gracefully.
+
+**Requirements:**
+- NFR-3.3.1: All errors logged with context
+- NFR-3.3.2: User-facing errors are friendly
+- NFR-3.3.3: Critical errors alert dev team
+- NFR-3.3.4: Error rates monitored
+- NFR-3.3.5: Automatic retry for transient failures
+
+---
+
+### NFR-4: Usability
+
+#### NFR-4.1: Accessibility
+The system SHALL be accessible to users with disabilities.
+
+**Requirements:**
+- NFR-4.1.1: WCAG 2.1 Level AA compliance
+- NFR-4.1.2: Screen reader compatibility
+- NFR-4.1.3: Keyboard navigation support
+- NFR-4.1.4: Sufficient color contrast
+- NFR-4.1.5: Focus indicators visible
+
+#### NFR-4.2: Responsiveness
+The system SHALL work on various devices.
+
+**Requirements:**
+- NFR-4.2.1: Desktop optimized (1024px+)
+- NFR-4.2.2: Tablet usable (768px+)
+- NFR-4.2.3: Mobile usable (320px+)
+- NFR-4.2.4: Touch targets minimum 44px
+- NFR-4.2.5: No horizontal scrolling
+
+#### NFR-4.3: Browser Support
+The system SHALL support modern browsers.
+
+**Requirements:**
+- NFR-4.3.1: Chrome (last 2 versions)
+- NFR-4.3.2: Firefox (last 2 versions)
+- NFR-4.3.3: Safari (last 2 versions)
+- NFR-4.3.4: Edge (last 2 versions)
+- NFR-4.3.5: No IE11 support
+
+---
+
+### NFR-5: Maintainability
+
+#### NFR-5.1: Code Quality
+The codebase SHALL maintain high quality standards.
+
+**Requirements:**
+- NFR-5.1.1: TypeScript strict mode enabled
+- NFR-5.1.2: ESLint rules enforced
+- NFR-5.1.3: Unit test coverage >80%
+- NFR-5.1.4: Code review required for merge
+- NFR-5.1.5: Documentation for public APIs
+
+#### NFR-5.2: Deployment
+The system SHALL support reliable deployment.
+
+**Requirements:**
+- NFR-5.2.1: Automated CI/CD pipeline
+- NFR-5.2.2: Zero-downtime deployments
+- NFR-5.2.3: Rollback capability
+- NFR-5.2.4: Feature flags for gradual rollout
+- NFR-5.2.5: Staging environment mirrors production
+
+---
+
+## API Specifications
+
+### API Overview
+
+PaymentPredictor provides a RESTful API for all operations. The API is versioned and follows REST conventions.
+
+**Base URL:** `https://api.paymentpredictor.com/v1`
+
+**Authentication:** Bearer token in Authorization header
+
+**Content-Type:** `application/json`
+
+### API Endpoints
+
+#### Authentication Endpoints
+
+##### POST /auth/register
+Create a new user account.
+
+**Request:**
+```json
+{
+  "email": "user@example.com",
+  "password": "securepassword123",
+  "name": "John Doe"
+}
+```
+
+**Response (201 Created):**
+```json
+{
+  "id": "usr_abc123",
+  "email": "user@example.com",
+  "name": "John Doe",
+  "createdAt": "2026-02-06T10:00:00Z"
+}
+```
+
+**Errors:**
+- 400: Invalid input
+- 409: Email already exists
+
+---
+
+##### POST /auth/login
+Authenticate and receive access token.
+
+**Request:**
+```json
+{
+  "email": "user@example.com",
+  "password": "securepassword123"
+}
+```
+
+**Response (200 OK):**
+```json
+{
+  "accessToken": "eyJhbGciOiJIUzI1NiIs...",
+  "expiresIn": 2592000,
+  "user": {
+    "id": "usr_abc123",
+    "email": "user@example.com",
+    "name": "John Doe"
+  }
+}
+```
+
+**Errors:**
+- 401: Invalid credentials
+- 429: Too many attempts
+
+---
+
+##### POST /auth/forgot-password
+Request password reset email.
+
+**Request:**
+```json
+{
+  "email": "user@example.com"
+}
+```
+
+**Response (200 OK):**
+```json
+{
+  "message": "If this email exists, a reset link has been sent."
+}
+```
+
+---
+
+#### Client Endpoints
+
+##### GET /clients
+List all clients for authenticated user.
+
+**Query Parameters:**
+- `page` (int): Page number (default: 1)
+- `limit` (int): Items per page (default: 20, max: 100)
+- `sort` (string): Sort field (name, riskScore, createdAt)
+- `order` (string): Sort order (asc, desc)
+- `search` (string): Search by name
+
+**Response (200 OK):**
+```json
+{
+  "data": [
+    {
+      "id": "cli_abc123",
+      "companyName": "Acme Corp",
+      "contactName": "Jane Smith",
+      "contactEmail": "jane@acme.com",
+      "industry": "technology",
+      "riskScore": 3,
+      "totalInvoices": 12,
+      "paidOnTime": 10,
+      "createdAt": "2026-01-15T10:00:00Z"
+    }
+  ],
+  "meta": {
+    "page": 1,
+    "limit": 20,
+    "total": 45,
+    "totalPages": 3
+  }
+}
+```
+
+---
+
+##### POST /clients
+Create a new client.
+
+**Request:**
+```json
+{
+  "companyName": "Acme Corp",
+  "contactName": "Jane Smith",
+  "contactEmail": "jane@acme.com",
+  "industry": "technology",
+  "notes": "Great client, always responsive."
+}
+```
+
+**Response (201 Created):**
+```json
+{
+  "id": "cli_abc123",
+  "companyName": "Acme Corp",
+  "contactName": "Jane Smith",
+  "contactEmail": "jane@acme.com",
+  "industry": "technology",
+  "riskScore": 5,
+  "notes": "Great client, always responsive.",
+  "createdAt": "2026-02-06T10:00:00Z"
+}
+```
+
+---
+
+##### GET /clients/:id
+Get a single client.
+
+**Response (200 OK):**
+```json
+{
+  "id": "cli_abc123",
+  "companyName": "Acme Corp",
+  "contactName": "Jane Smith",
+  "contactEmail": "jane@acme.com",
+  "industry": "technology",
+  "riskScore": 3,
+  "riskFactors": [
+    { "factor": "industry", "score": 4, "weight": 0.2 },
+    { "factor": "history", "score": 2, "weight": 0.5 },
+    { "factor": "recency", "score": 3, "weight": 0.2 },
+    { "factor": "size", "score": 5, "weight": 0.1 }
+  ],
+  "statistics": {
+    "totalInvoices": 12,
+    "paidOnTime": 10,
+    "averageDaysToPayment": 28,
+    "onTimeRate": 0.83
+  },
+  "notes": "Great client, always responsive.",
+  "createdAt": "2026-01-15T10:00:00Z",
+  "updatedAt": "2026-02-01T14:30:00Z"
+}
+```
+
+---
+
+##### PATCH /clients/:id
+Update a client.
+
+**Request:**
+```json
+{
+  "contactName": "John Smith",
+  "notes": "Updated contact info"
+}
+```
+
+**Response (200 OK):**
+```json
+{
+  "id": "cli_abc123",
+  "companyName": "Acme Corp",
+  "contactName": "John Smith",
+  "updatedAt": "2026-02-06T11:00:00Z"
+}
+```
+
+---
+
+##### DELETE /clients/:id
+Delete a client (soft delete).
+
+**Response (204 No Content)**
+
+---
+
+#### Invoice Endpoints
+
+##### GET /invoices
+List all invoices.
+
+**Query Parameters:**
+- `page`, `limit`: Pagination
+- `status`: Filter by status (pending, overdue, paid)
+- `clientId`: Filter by client
+- `startDate`, `endDate`: Date range filter
+
+**Response (200 OK):**
+```json
+{
+  "data": [
+    {
+      "id": "inv_abc123",
+      "invoiceNumber": "INV-2026-001",
+      "clientId": "cli_abc123",
+      "clientName": "Acme Corp",
+      "amount": 2500.00,
+      "currency": "USD",
+      "dueDate": "2026-02-15",
+      "status": "pending",
+      "daysUntilDue": 9,
+      "createdAt": "2026-02-01T10:00:00Z"
+    }
+  ],
+  "meta": {
+    "page": 1,
+    "limit": 20,
+    "total": 150,
+    "totalPages": 8
+  },
+  "summary": {
+    "totalOutstanding": 45000.00,
+    "totalOverdue": 12500.00,
+    "countByStatus": {
+      "pending": 25,
+      "overdue": 8,
+      "paid": 117
+    }
+  }
+}
+```
+
+---
+
+##### POST /invoices
+Create a new invoice.
+
+**Request:**
+```json
+{
+  "clientId": "cli_abc123",
+  "invoiceNumber": "INV-2026-001",
+  "amount": 2500.00,
+  "currency": "USD",
+  "dueDate": "2026-02-15",
+  "description": "Website development - Phase 1"
+}
+```
+
+**Response (201 Created):**
+```json
+{
+  "id": "inv_abc123",
+  "invoiceNumber": "INV-2026-001",
+  "clientId": "cli_abc123",
+  "amount": 2500.00,
+  "currency": "USD",
+  "dueDate": "2026-02-15",
+  "status": "pending",
+  "description": "Website development - Phase 1",
+  "createdAt": "2026-02-06T10:00:00Z"
+}
+```
+
+---
+
+##### GET /invoices/:id
+Get single invoice with full details.
+
+**Response (200 OK):**
+```json
+{
+  "id": "inv_abc123",
+  "invoiceNumber": "INV-2026-001",
+  "client": {
+    "id": "cli_abc123",
+    "companyName": "Acme Corp",
+    "riskScore": 3
+  },
+  "amount": 2500.00,
+  "currency": "USD",
+  "dueDate": "2026-02-15",
+  "status": "pending",
+  "description": "Website development - Phase 1",
+  "followUps": [
+    {
+      "id": "fu_abc123",
+      "scheduledAt": "2026-02-12T09:00:00Z",
+      "status": "scheduled",
+      "template": "reminder_before"
+    }
+  ],
+  "history": [
+    {
+      "action": "created",
+      "timestamp": "2026-02-01T10:00:00Z"
+    },
+    {
+      "action": "status_changed",
+      "from": "draft",
+      "to": "pending",
+      "timestamp": "2026-02-01T10:05:00Z"
+    }
+  ],
+  "createdAt": "2026-02-01T10:00:00Z",
+  "updatedAt": "2026-02-01T10:05:00Z"
+}
+```
+
+---
+
+##### PATCH /invoices/:id
+Update an invoice.
+
+**Request:**
+```json
+{
+  "amount": 2750.00,
+  "dueDate": "2026-02-20"
+}
+```
+
+---
+
+##### POST /invoices/:id/mark-paid
+Mark invoice as paid.
+
+**Request:**
+```json
+{
+  "paidDate": "2026-02-10",
+  "paymentMethod": "bank_transfer",
+  "notes": "Received via ACH"
+}
+```
+
+**Response (200 OK):**
+```json
+{
+  "id": "inv_abc123",
+  "status": "paid",
+  "paidDate": "2026-02-10",
+  "daysToPayment": 10,
+  "daysLate": 0
+}
+```
+
+---
+
+##### DELETE /invoices/:id
+Delete an invoice.
+
+**Response (204 No Content)**
+
+---
+
+#### Follow-up Endpoints
+
+##### GET /follow-ups
+List scheduled and sent follow-ups.
+
+**Query Parameters:**
+- `invoiceId`: Filter by invoice
+- `status`: scheduled, sent, failed
+- `startDate`, `endDate`: Date range
+
+**Response (200 OK):**
+```json
+{
+  "data": [
+    {
+      "id": "fu_abc123",
+      "invoiceId": "inv_abc123",
+      "clientEmail": "jane@acme.com",
+      "subject": "Reminder: Invoice INV-2026-001",
+      "scheduledAt": "2026-02-12T09:00:00Z",
+      "sentAt": null,
+      "status": "scheduled",
+      "template": "reminder_before"
+    }
+  ]
+}
+```
+
+---
+
+##### POST /follow-ups/:id/send
+Manually trigger a follow-up.
+
+**Response (200 OK):**
+```json
+{
+  "id": "fu_abc123",
+  "status": "sent",
+  "sentAt": "2026-02-06T11:30:00Z"
+}
+```
+
+---
+
+##### DELETE /follow-ups/:id
+Cancel a scheduled follow-up.
+
+**Response (204 No Content)**
+
+---
+
+#### Dashboard Endpoints
+
+##### GET /dashboard
+Get dashboard summary data.
+
+**Response (200 OK):**
+```json
+{
+  "outstanding": {
+    "total": 45000.00,
+    "count": 25,
+    "currency": "USD"
+  },
+  "overdue": {
+    "total": 12500.00,
+    "count": 8,
+    "oldestDays": 45
+  },
+  "atRisk": {
+    "count": 5,
+    "total": 8500.00
+  },
+  "recentPayments": [
+    {
+      "invoiceId": "inv_xyz789",
+      "clientName": "Beta Inc",
+      "amount": 3000.00,
+      "paidDate": "2026-02-05"
+    }
+  ],
+  "upcomingDueDates": [
+    {
+      "invoiceId": "inv_abc123",
+      "clientName": "Acme Corp",
+      "amount": 2500.00,
+      "dueDate": "2026-02-15",
+      "daysUntilDue": 9
+    }
+  ]
+}
+```
+
+---
+
+#### Settings Endpoints
+
+##### GET /settings
+Get user settings.
+
+**Response (200 OK):**
+```json
+{
+  "notifications": {
+    "emailEnabled": true,
+    "weeklyDigest": true,
+    "paymentReceived": true,
+    "invoiceOverdue": true
+  },
+  "followUpDefaults": {
+    "schedule": [-3, 0, 3, 7, 14],
+    "enabled": true
+  },
+  "templates": {
+    "reminderBefore": {
+      "subject": "Upcoming payment: {invoice_number}",
+      "body": "..."
+    }
+  }
+}
+```
+
+---
+
+##### PATCH /settings
+Update user settings.
+
+**Request:**
+```json
+{
+  "notifications": {
+    "weeklyDigest": false
+  }
+}
+```
+
+---
+
+## Data Models
+
+### Entity Relationship Diagram
+
+```
+┌─────────────┐     ┌─────────────┐     ┌─────────────┐
+│    User     │────<│   Client    │────<│   Invoice   │
+└─────────────┘     └─────────────┘     └─────────────┘
+       │                   │                   │
+       │                   │                   │
+       ▼                   ▼                   ▼
+┌─────────────┐     ┌─────────────┐     ┌─────────────┐
+│  Settings   │     │   Notes     │     │  FollowUp   │
+└─────────────┘     └─────────────┘     └─────────────┘
+```
+
+### User Model
+
+```typescript
+interface User {
+  id: string;                    // Primary key (uuid)
+  email: string;                 // Unique, required
+  passwordHash: string | null;   // Null for OAuth users
+  name: string;                  // Required
+  profilePicture: string | null; // URL
+  
+  // OAuth
+  googleId: string | null;       // Google OAuth ID
+  
+  // Subscription
+  plan: 'free' | 'pro' | 'business';
+  planExpiresAt: Date | null;
+  stripeCustomerId: string | null;
+  
+  // Timestamps
+  createdAt: Date;
+  updatedAt: Date;
+  lastLoginAt: Date | null;
+  emailVerifiedAt: Date | null;
+  deletedAt: Date | null;        // Soft delete
+}
+```
+
+### Client Model
+
+```typescript
+interface Client {
+  id: string;                    // Primary key (uuid)
+  userId: string;                // Foreign key to User
+  
+  // Basic Info
+  companyName: string;           // Required, max 200
+  contactName: string | null;    // Optional, max 100
+  contactEmail: string | null;   // Optional, validated
+  phone: string | null;          // Optional
+  website: string | null;        // Optional, validated URL
+  
+  // Classification
+  industry: Industry;            // Enum
+  companySize: CompanySize | null;
+  
+  // Notes
+  notes: string | null;          // Max 10,000 chars
+  
+  // Computed (cached)
+  riskScore: number;             // 1-10
+  totalInvoices: number;
+  paidOnTime: number;
+  averageDaysToPayment: number;
+  
+  // Timestamps
+  createdAt: Date;
+  updatedAt: Date;
+  deletedAt: Date | null;        // Soft delete
+}
+
+enum Industry {
+  technology = 'technology',
+  marketing = 'marketing',
+  finance = 'finance',
+  healthcare = 'healthcare',
+  education = 'education',
+  retail = 'retail',
+  manufacturing = 'manufacturing',
+  media = 'media',
+  legal = 'legal',
+  consulting = 'consulting',
+  nonprofit = 'nonprofit',
+  government = 'government',
+  hospitality = 'hospitality',
+  construction = 'construction',
+  realestate = 'realestate',
+  other = 'other'
+}
+
+enum CompanySize {
+  solo = 'solo',           // 1 person
+  small = 'small',         // 2-10
+  medium = 'medium',       // 11-50
+  large = 'large',         // 51-200
+  enterprise = 'enterprise' // 200+
+}
+```
+
+### Invoice Model
+
+```typescript
+interface Invoice {
+  id: string;                    // Primary key (uuid)
+  userId: string;                // Foreign key to User
+  clientId: string;              // Foreign key to Client
+  
+  // Invoice Details
+  invoiceNumber: string;         // Unique per user
+  amount: number;                // Decimal, 2 places
+  currency: string;              // ISO 4217 (default: USD)
+  description: string | null;    // Optional
+  
+  // Dates
+  issueDate: Date;               // When invoice created/sent
+  dueDate: Date;                 // Payment due date
+  paidDate: Date | null;         // When payment received
+  
+  // Status
+  status: InvoiceStatus;
+  
+  // Computed
+  daysLate: number | null;       // Calculated on payment
+  
+  // Follow-up Control
+  followUpsEnabled: boolean;     // Default: true
+  
+  // Timestamps
+  createdAt: Date;
+  updatedAt: Date;
+  deletedAt: Date | null;
+}
+
+enum InvoiceStatus {
+  draft = 'draft',
+  pending = 'pending',      // Sent, awaiting payment
+  overdue = 'overdue',      // Past due date
+  paid = 'paid'
+}
+```
+
+### FollowUp Model
+
+```typescript
+interface FollowUp {
+  id: string;                    // Primary key (uuid)
+  invoiceId: string;             // Foreign key to Invoice
+  
+  // Email Details
+  recipientEmail: string;
+  subject: string;
+  body: string;                  // HTML content
+  
+  // Scheduling
+  scheduledAt: Date;             // When to send
+  sentAt: Date | null;           // When actually sent
+  
+  // Status
+  status: FollowUpStatus;
+  errorMessage: string | null;   // If failed
+  
+  // Template Reference
+  templateType: TemplateType;
+  
+  // Timestamps
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+enum FollowUpStatus {
+  scheduled = 'scheduled',
+  sent = 'sent',
+  failed = 'failed',
+  cancelled = 'cancelled'
+}
+
+enum TemplateType {
+  reminder_before = 'reminder_before',    // Before due date
+  reminder_due = 'reminder_due',          // On due date
+  reminder_after_1 = 'reminder_after_1',  // 3 days after
+  reminder_after_2 = 'reminder_after_2',  // 7 days after
+  final_notice = 'final_notice'           // 14 days after
+}
+```
+
+### UserSettings Model
+
+```typescript
+interface UserSettings {
+  id: string;                    // Primary key (uuid)
+  userId: string;                // Foreign key to User (unique)
+  
+  // Notifications
+  emailNotifications: boolean;   // Master toggle
+  weeklyDigest: boolean;
+  paymentReceivedNotify: boolean;
+  invoiceOverdueNotify: boolean;
+  
+  // Follow-up Defaults
+  followUpsEnabled: boolean;     // Default for new invoices
+  followUpSchedule: number[];    // Days relative to due [-3,0,3,7,14]
+  
+  // Templates (JSON)
+  emailTemplates: Record<TemplateType, EmailTemplate>;
+  
+  // Preferences
+  timezone: string;              // IANA timezone
+  currency: string;              // Default currency
+  dateFormat: string;            // Date display format
+  
+  // Timestamps
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+interface EmailTemplate {
+  subject: string;
+  body: string;
+  enabled: boolean;
+}
+```
+
+### IndustryRisk Model
+
+```typescript
+interface IndustryRisk {
+  id: string;                    // Primary key
+  industry: Industry;            // Unique
+  
+  // Risk Data
+  averageRiskScore: number;      // 1-10
+  averageDaysToPayment: number;
+  latePaymentRate: number;       // 0-1
+  
+  // Confidence
+  sampleSize: number;            // Number of data points
+  lastUpdated: Date;
+  
+  // Source
+  source: string;                // Data source reference
+}
+```
+
+### AuditLog Model
+
+```typescript
+interface AuditLog {
+  id: string;                    // Primary key (uuid)
+  userId: string;                // Who performed action
+  
+  // Event Details
+  action: AuditAction;
+  entityType: string;            // 'client', 'invoice', etc.
+  entityId: string;
+  
+  // Change Details
+  changes: Record<string, { old: any; new: any }>;
+  
+  // Context
+  ipAddress: string | null;
+  userAgent: string | null;
+  
+  // Timestamp
+  createdAt: Date;
+}
+
+enum AuditAction {
+  create = 'create',
+  update = 'update',
+  delete = 'delete',
+  login = 'login',
+  logout = 'logout',
+  password_change = 'password_change'
+}
+```
+
+---
+
+## Integration Requirements
+
+### Stripe Integration [Post-MVP]
+
+**Purpose:** Import invoices and payment status from Stripe.
+
+**Requirements:**
+- OAuth connection to Stripe account
+- Sync invoices from Stripe Invoices API
+- Webhook handler for payment events
+- Map Stripe invoice status to internal status
+- Support for multiple Stripe accounts (Business tier)
+
+**Data Mapping:**
+| Stripe Field | Our Field |
+|--------------|-----------|
+| invoice.id | externalId |
+| invoice.customer_email | client.contactEmail |
+| invoice.amount_due | amount |
+| invoice.due_date | dueDate |
+| invoice.status | status (mapped) |
+
+---
+
+### QuickBooks Integration [Post-MVP]
+
+**Purpose:** Import invoices and clients from QuickBooks.
+
+**Requirements:**
+- OAuth 2.0 connection to QuickBooks
+- Sync customers as clients
+- Sync invoices with payment status
+- Bi-directional sync (optional)
+- Handle QuickBooks-specific invoice fields
+
+---
+
+### Resend Email Integration [MVP]
+
+**Purpose:** Send follow-up emails.
+
+**Requirements:**
+- Resend API integration
+- Template rendering before send
+- Delivery status tracking
+- Bounce handling
+- Unsubscribe link compliance
+
+**API Usage:**
+```typescript
+// Example email send
+await resend.emails.send({
+  from: 'reminders@paymentpredictor.com',
+  to: client.contactEmail,
+  subject: 'Payment Reminder: Invoice #123',
+  html: renderedTemplate
+});
+```
+
+---
+
+## Security Requirements
+
+### SR-1: Authentication
+
+- SR-1.1: All passwords hashed with bcrypt (cost 12)
+- SR-1.2: JWT tokens signed with RS256
+- SR-1.3: Refresh tokens stored securely
+- SR-1.4: OAuth state parameter validated
+- SR-1.5: CSRF protection on all state-changing endpoints
+
+### SR-2: Authorization
+
+- SR-2.1: Row-level security on all user data
+- SR-2.2: API routes require valid session
+- SR-2.3: Rate limiting: 100 requests/minute/user
+- SR-2.4: Admin endpoints require admin role
+- SR-2.5: Subscription checks on premium features
+
+### SR-3: Data Protection
+
+- SR-3.1: All data encrypted at rest (database-level)
+- SR-3.2: TLS 1.3 for all connections
+- SR-3.3: Sensitive fields (email, phone) encrypted application-level
+- SR-3.4: API keys rotated annually
+- SR-3.5: Secrets stored in environment, never in code
+
+### SR-4: Compliance
+
+- SR-4.1: GDPR: Right to access (data export)
+- SR-4.2: GDPR: Right to erasure (account deletion)
+- SR-4.3: GDPR: Data portability
+- SR-4.4: Cookie consent for analytics
+- SR-4.5: Privacy policy and ToS
+
+---
+
+## Appendix
+
+### A. Industry Risk Defaults
+
+| Industry | Default Risk Score | Average Days | Notes |
+|----------|-------------------|--------------|-------|
+| Technology | 4 | 32 | Generally pays well |
+| Marketing | 5 | 38 | Variable |
+| Finance | 3 | 25 | Usually prompt |
+| Healthcare | 5 | 45 | Insurance delays |
+| Education | 6 | 52 | Budget cycles |
+| Retail | 6 | 40 | Cash flow variable |
+| Manufacturing | 4 | 35 | Established processes |
+| Media | 6 | 48 | Notorious for delays |
+| Legal | 3 | 28 | Process-driven |
+| Consulting | 4 | 32 | Corporate clients |
+| Nonprofit | 7 | 55 | Grant timing issues |
+| Government | 8 | 75 | Bureaucratic delays |
+| Hospitality | 5 | 38 | Seasonal |
+| Construction | 6 | 45 | Project-dependent |
+| Real Estate | 4 | 30 | Transaction-based |
+| Other | 5 | 35 | Default |
+
+### B. Follow-up Email Templates
+
+#### Template: reminder_before (3 days before due)
+
+**Subject:** Upcoming payment: Invoice {invoice_number}
+
+**Body:**
+```
+Hi {client_name},
+
+This is a friendly reminder that invoice {invoice_number} for {amount} is due on {due_date}.
+
+If you have any questions about this invoice, please let me know.
+
+Invoice Details:
+- Invoice Number: {invoice_number}
+- Amount: {amount}
+- Due Date: {due_date}
+- Description: {description}
+
+Thank you for your business!
+
+Best regards,
+{user_name}
+```
+
+#### Template: reminder_due (on due date)
+
+**Subject:** Payment due today: Invoice {invoice_number}
+
+**Body:**
+```
+Hi {client_name},
+
+Just a quick note that invoice {invoice_number} for {amount} is due today.
+
+If you've already sent payment, please disregard this message. Otherwise, I'd appreciate if you could process this at your earliest convenience.
+
+Invoice Details:
+- Invoice Number: {invoice_number}
+- Amount: {amount}
+- Due Date: {due_date}
+
+Thank you!
+
+Best regards,
+{user_name}
+```
+
+#### Template: reminder_after_1 (3 days overdue)
+
+**Subject:** Payment overdue: Invoice {invoice_number}
+
+**Body:**
+```
+Hi {client_name},
+
+I wanted to follow up on invoice {invoice_number} for {amount}, which was due on {due_date}.
+
+If there are any issues with the invoice or payment, please let me know so we can resolve them.
+
+Invoice Details:
+- Invoice Number: {invoice_number}
+- Amount: {amount}
+- Due Date: {due_date}
+- Days Overdue: {days_overdue}
+
+I appreciate your prompt attention to this matter.
+
+Best regards,
+{user_name}
+```
+
+#### Template: reminder_after_2 (7 days overdue)
+
+**Subject:** Second reminder: Invoice {invoice_number} - {days_overdue} days overdue
+
+**Body:**
+```
+Hi {client_name},
+
+This is a follow-up regarding invoice {invoice_number} for {amount}, which is now {days_overdue} days overdue.
+
+Please process this payment as soon as possible. If there are any concerns about the invoice, I'm happy to discuss.
+
+Invoice Details:
+- Invoice Number: {invoice_number}
+- Amount: {amount}
+- Original Due Date: {due_date}
+- Days Overdue: {days_overdue}
+
+Thank you for your attention to this matter.
+
+Best regards,
+{user_name}
+```
+
+#### Template: final_notice (14 days overdue)
+
+**Subject:** Final notice: Invoice {invoice_number} - Immediate attention required
+
+**Body:**
+```
+Hi {client_name},
+
+Invoice {invoice_number} for {amount} is now {days_overdue} days overdue. This requires your immediate attention.
+
+If I don't receive payment or a response within the next 7 days, I may need to consider additional steps to collect this outstanding amount.
+
+Please process this payment immediately or contact me to discuss the situation.
+
+Invoice Details:
+- Invoice Number: {invoice_number}
+- Amount: {amount}
+- Original Due Date: {due_date}
+- Days Overdue: {days_overdue}
+
+I hope we can resolve this promptly.
+
+Best regards,
+{user_name}
+```
+
+### C. Risk Score Algorithm (MVP)
+
+```typescript
+function calculateRiskScore(client: Client): number {
+  let score = 0;
+  let totalWeight = 0;
+
+  // Factor 1: Industry Risk (20%)
+  const industryRisk = getIndustryRisk(client.industry);
+  score += industryRisk.averageRiskScore * 0.2;
+  totalWeight += 0.2;
+
+  // Factor 2: Payment History (50%)
+  if (client.totalInvoices > 0) {
+    const onTimeRate = client.paidOnTime / client.totalInvoices;
+    const historyScore = 10 - (onTimeRate * 9); // 10 = always late, 1 = always on time
+    score += historyScore * 0.5;
+    totalWeight += 0.5;
+  } else {
+    // No history, use industry default
+    score += industryRisk.averageRiskScore * 0.5;
+    totalWeight += 0.5;
+  }
+
+  // Factor 3: Recent Payment Behavior (20%)
+  const recentInvoices = getRecentInvoices(client.id, 90); // Last 90 days
+  if (recentInvoices.length > 0) {
+    const recentOnTimeRate = recentInvoices.filter(i => i.daysLate <= 0).length / recentInvoices.length;
+    const recentScore = 10 - (recentOnTimeRate * 9);
+    score += recentScore * 0.2;
+    totalWeight += 0.2;
+  } else {
+    score += 5 * 0.2; // Neutral if no recent data
+    totalWeight += 0.2;
+  }
+
+  // Factor 4: Average Invoice Size (10%)
+  const avgAmount = getAverageInvoiceAmount(client.id);
+  // Higher amounts = slightly higher risk (more scrutiny)
+  const sizeScore = Math.min(10, avgAmount / 1000); // $10k+ = max risk
+  score += sizeScore * 0.1;
+  totalWeight += 0.1;
+
+  // Normalize to 1-10
+  const normalizedScore = Math.round(score / totalWeight);
+  return Math.max(1, Math.min(10, normalizedScore));
+}
+```
+
+### D. Document Changelog
+
+| Version | Date | Author | Changes |
+|---------|------|--------|---------|
+| 1.0 | 2026-02-06 | Product Team | Initial draft |
+
+---
+
+*End of PRD*
+
